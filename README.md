@@ -1,3 +1,2 @@
 # Machine Learning Code
----
-- By Umakant Vashishtha
+By Umakant Vashishtha
