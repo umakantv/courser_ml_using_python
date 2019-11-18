@@ -65,21 +65,21 @@ Theta2_grad = zeros(size(Theta2));
 X = [ones(m, 1) X];
 
 for i = 1:m
-  x_i = X(i, :)';
+  x_i = X(i, :)';   % x_i has size 401 x 1
   y_i = zeros(num_labels, 1);
-  y_i(y(i)) = 1;
+  y_i(y(i)) = 1;    % y_i has size = 10x1
 
-  z2 = Theta1 * x_i;
-  a2 = sigmoid(z2);
-  a2 = [1; a2];
-  z3 = Theta2 * a2;
-  a3 = sigmoid(z3);
+  z2 = Theta1 * x_i;  % Theta1 has size = 25 x 401
+  a2 = sigmoid(z2);   % a2 has size = 25 x 1
+  a2 = [1; a2];       % a2 has size = 26 x 1
+  z3 = Theta2 * a2;   % Theta2 has size = 10 x 26
+  a3 = sigmoid(z3);   % a3 has size 10 x 1
 
   cost_i = -1 * sum( y_i .* log(a3) + (1 - y_i) .* log(1-a3) ) ;
   J = J + cost_i;
 
-  err3 = a3 - y_i;
-  Theta2_grad = Theta2_grad + err3 * (a2)';
+  err3 = a3 - y_i;    % err3 -> 10 x 1
+  Theta2_grad = Theta2_grad + err3 * (a2)';   % Theta2_grad -> 10 x 26
   
   sigGradz2 = sigmoidGradient(z2);
   err2 = ((Theta2)' * err3)(2:end) .* sigGradz2;

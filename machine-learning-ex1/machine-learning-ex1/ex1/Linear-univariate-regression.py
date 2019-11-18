@@ -1,7 +1,6 @@
 # To add a new cell, type '#%%'
 # To add a new markdown cell, type '#%% [markdown]'
 #%%
-from IPython import get_ipython
 
 #%% [markdown]
 # # Linear Regression
@@ -23,14 +22,13 @@ from scipy.stats import norm
 # Second Column is the profit of a food truck in that city
 
 #%%
-data = pd.read_csv('ex1data1.txt', sep = ',', header=None)
-data.columns = ["Population of city", "Profit of a food truck"]
+data = pd.read_csv('train.csv')
 data.head()
 
 
 #%%
-x = data["Population of city"]
-y = data["Profit of a food truck"]
+x = data["LotArea"]
+y = data["SalePrice"]
 y.head()
 
 
@@ -100,7 +98,7 @@ theta = np.array([0.0, 0.0])
 
 #%%
 theta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
-computeCost(X, y, theta)
+print(computeCost(X, y, theta))
 
 
 #%%
@@ -139,7 +137,7 @@ def grad_desc(X, y, theta, iter=200, alpha=0.01):
 theta = np.array([0, 0])
 theta, thetas, costs = grad_desc(X, y, theta, iter= 500, alpha=0.01)
 print("Cost:", computeCost(X, y, theta))
-theta
+print(theta)
 
 
 #%%
@@ -187,12 +185,9 @@ from matplotlib.ticker import LinearLocator, FormatStrFormatter
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-surf = ax.plot_surface(theta1, theta2, J_vals, cmap=cm.coolwarm,
-                       linewidth=0, antialiased=False)
+surf = ax.plot_surface(theta1, theta2, J_vals,                                  cmap=cm.coolwarm,
+                     linewidth=0, antialiased=False)
 
 plt.show()
 
-
 #%%
-
-

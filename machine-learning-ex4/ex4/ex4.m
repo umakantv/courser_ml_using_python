@@ -205,6 +205,9 @@ Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
 
+fprintf(['Cost at parameters (loaded from ex4weights): %f '...
+         '\n(this value should be about 0.383770)\n'], J);
+         
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
