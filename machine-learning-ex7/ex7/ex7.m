@@ -149,7 +149,7 @@ fprintf('\nApplying K-Means to compress an image.\n\n');
 idx = findClosestCentroids(X, centroids);
 
 % Essentially, now we have represented the image X as in terms of the
-% indices in idx. 
+% indices in idx.
 
 % We can now recover the image from the indices (idx) by mapping each pixel
 % (specified by its index in idx) to the centroid value
